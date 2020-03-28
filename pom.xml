@@ -14,11 +14,6 @@
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-    <sonar.projectKey>Martin1196155_My_First_Project</sonar.projectKey>
-    <sonar.organization>martin1196155-github</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.login>78f20f77a68a5256d075c2f178233dd03a4b666d</sonar.login>
-    <sonar.coverage.jacoco.xmlReportPaths>**/**.exec</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
   <modules>

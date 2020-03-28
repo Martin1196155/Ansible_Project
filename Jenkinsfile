@@ -40,5 +40,5 @@ node('master'){
   sh 'docker build -t martin1051/myapp:latest .'  
   }
 }
-}
+
 

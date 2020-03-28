@@ -42,7 +42,7 @@ node('master'){
  stage('Docker_Run'){
    sshagent(['Connect-Tomcat']) {
     def dockerRun = 'docker run --name myapp-container -p 8080:8080 -d martin1051/myapp:latest'
-    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.40.62 ${dockerRun}"  
+    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.158 ${dockerRun}"  
   }
  }
 }

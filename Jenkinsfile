@@ -36,9 +36,8 @@ node('master'){
   }
   }
   
-  stage('Tomcat_Deployment'){
-  sshagent(['Connect-Tomcat']) {
-    sh 'scp -o StrictHostKeyChecking=no **/target/*.war ec2-user@172.31.40.62:/opt/tomcat/webapps'  
+  stage('Docker_Build'){
+  sh 'docker build -t martin1051/myapp:latest .'  
   }
 }
 }

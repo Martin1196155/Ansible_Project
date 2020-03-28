@@ -29,7 +29,9 @@ node('master'){
     }
   
   stage('Docker_Build'){
-  sh 'docker build -t martin1051/myapp:latest .'  
+   sh 'pwd'
+   sh 'll'
+  // sh 'docker build -t martin1051/myapp:latest .'  
   }
 }
 

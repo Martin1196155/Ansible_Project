@@ -30,7 +30,7 @@ node('master'){
   
   stage('Docker_Build'){
    sh 'pwd'
-   sh 'll'
+   sh 'ls'
   // sh 'docker build -t martin1051/myapp:latest .'  
   }
 }

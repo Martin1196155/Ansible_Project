@@ -14,11 +14,7 @@
   <packaging>jar</packaging>
   <name>Server</name>
   <description>Logic.</description>
-  
-  <properties>
-     <sonar.projectKey>Server</sonar.projectKey>
-  </properties>
-         
+
   <build>
     <finalName>${project.artifactId}</finalName>
   </build>

@@ -28,14 +28,6 @@ node('master'){
         jacoco()
     }
   
-  stage('Sonar'){
-  withMaven(
-    maven : "M2_HOME"
-    ){
-    sh 'mvn clean install sonar:sonar'   
-  }
-  }
-  
   stage('Docker_Build'){
   sh 'docker build -t martin1051/myapp:latest .'  
   }

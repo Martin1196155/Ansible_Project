@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Stop the running container
+    shell: docker container stop $(docker container ls -aq)
+    ignore_errors: yes
+
+  - name: Remove the un-running containers
+    shell: docker container rm $(docker container ls -aq)
+    ignore_errors: yes
+
+  - name: Remove docker images
+    shell: docker rmi $(docker image ls -aq)
+    ignore_errors: yes
+
+  - name: Build Docker images
+    command: docker build -t simple-app-image .
+    args:
+        chdir: /opt/docker
+
+  - name: Run docker images to create Docker Containers
+    command: docker run -d --name myapp -p 8080:8080 simple-app-image

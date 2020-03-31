@@ -14,10 +14,8 @@
     shell: docker rmi $(docker image ls -aq)
     ignore_errors: yes
 
-  - name: Build Docker images
-    command: docker build -t simple-app-image .
-    args:
-        chdir: /opt/docker
-
+  - name: Pull Docker images
+    command: docker pull martin1051/myapp:latest
+    
   - name: Run docker images to create Docker Containers
-    command: docker run -d --name myapp -p 8080:8080 simple-app-image
+    command: docker run -d --name mycontainer -p 8080:8080 martin1051/myapp:latest

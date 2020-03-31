@@ -28,23 +28,8 @@ node('master'){
         jacoco()
     }
   
-  stage('Docker_Build'){
-   sh 'docker build -t martin1051/myapp:latest .'  
-  }
- 
- stage('Docker_Push'){
- withCredentials([string(credentialsId: 'DockerHubPass', variable: 'DockerHubCred')]) {
-  sh "docker login -u martin1051 -p ${DockerHubCred}"
-  }
-  sh 'docker push martin1051/myapp:latest'
- }
- 
- stage('Docker_Run'){
-   def dockerRun = 'docker run --name myapp-container -p 8080:8080 -d martin1051/myapp:latest'
-   sshagent(['Connect-Tomcat']) {
-    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.158 ${dockerRun}"  
-  }
- }
+  stage('Ansible_Deployment'){
+   sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook -i hosts simple.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '**/target', sourceFiles: '**/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 }
 
 

@@ -29,7 +29,7 @@ node('master'){
     }
   
   stage('Ansible_Deployment'){
-  sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook -i /opt/docker/hosts /opt/docker/simple.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war, Dockerfile, simple.yml, hosts')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+  sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook -i /opt/docker/hosts /opt/docker/simple.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'webapp/target/*.war, Dockerfile, simple.yml, hosts')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
   }
 }
 
